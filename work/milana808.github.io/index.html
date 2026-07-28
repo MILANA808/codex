@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="АКСИ MATRIX — offline-first сайт с чатом, Identity, Quantum и картой приложений."
+    />
+    <title>АКСИ MATRIX · Live</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="АКСИ MATRIX домой"
+        >🌌 <span>АКСИ</span></a
+      >
+      <nav class="nav" aria-label="Основная навигация">
+        <a href="#home">Главная</a>
+        <a href="#chat">Чат</a>
+        <a href="#identity">Identity</a>
+        <a href="#quantum">Quantum</a>
+        <a href="#apps">Apps</a>
+      </nav>
+      <div class="status" aria-live="polite">
+        <span class="pulse"></span><span id="clock">--:--:-- МСК</span>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="hero panel">
+        <p class="eyebrow">offline-first · GitHub Pages ready</p>
+        <h1>АКСИ MATRIX</h1>
+        <p>
+          Единый живой сайт без обязательного backend: чат, цифровая identity,
+          квантовый демо‑контур и каталог приложений работают прямо в браузере.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="#chat">Открыть чат</a>
+          <a
+            class="button"
+            href="https://github.com/MILANA808/milana808.github.io"
+            >Репозиторий</a
+          >
+        </div>
+      </section>
+
+      <section id="chat" class="panel">
+        <div class="section-head">
+          <p class="eyebrow">offline brain</p>
+          <h2>Чат с АКСИ</h2>
+        </div>
+        <div id="chat-log" class="chat-log" aria-live="polite"></div>
+        <form id="chat-form" class="chat-form">
+          <label class="sr-only" for="chat-input">Сообщение</label>
+          <input
+            id="chat-input"
+            autocomplete="off"
+            placeholder="Напиши Акси…"
+          />
+          <button type="submit">Отправить</button>
+        </form>
+      </section>
+
+      <section id="identity" class="panel grid-panel">
+        <div>
+          <p class="eyebrow">sovereign id</p>
+          <h2>Identity</h2>
+          <p>Постоянный DID и проверяемая подпись локально в браузере.</p>
+        </div>
+        <dl class="facts">
+          <dt>DID</dt>
+          <dd id="did">did:aksi:ed25519:sovereign-1995-alfiya</dd>
+          <dt>Seed</dt>
+          <dd>Alfiya_AKSI_DIMAX_v3_2026</dd>
+          <dt>Stable hash</dt>
+          <dd id="stable-hash">вычисляется…</dd>
+        </dl>
+      </section>
+
+      <section id="quantum" class="panel grid-panel">
+        <div>
+          <p class="eyebrow">browser demo</p>
+          <h2>Quantum</h2>
+          <p>
+            Мини‑симулятор Bell state: нажми кнопку, чтобы получить fingerprint
+            состояния.
+          </p>
+        </div>
+        <div class="quantum-card">
+          <button id="quantum-run" type="button">▶ Запустить</button>
+          <pre id="quantum-output">Ожидаю запуск…</pre>
+        </div>
+      </section>
+
+      <section id="apps" class="panel">
+        <div class="section-head">
+          <p class="eyebrow">ecosystem</p>
+          <h2>Приложения</h2>
+        </div>
+        <div id="apps-grid" class="apps-grid"></div>
+      </section>
+    </main>
+
+    <footer>АКСИ MATRIX · MILANA808 · 1995→2026</footer>
+  </body>
+</html>
