@@ -22,6 +22,8 @@ const solarSystem = document.querySelector(".solar-system");
 const scaleToggle = document.querySelector("#scaleToggle");
 const messageButton = document.querySelector("#messageButton");
 const kindMessage = document.querySelector("#kindMessage");
+const repoGrid = document.querySelector("#repoGrid");
+const repoStatus = document.querySelector("#repoStatus");
 
 function showPlanetFact(name) {
   if (!planetInfo) return;
@@ -46,4 +48,87 @@ if (messageButton && kindMessage) {
     const next = (current + 1) % kindMessages.length;
     kindMessage.textContent = kindMessages[next];
   });
+}
+
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, (char) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[char]);
+}
+
+function repoDescription(repo) {
+  return repo.description || "Проект MILANA808 без описания — часть общего AKSI Globe созвездия.";
+}
+
+function repoLanguage(repo) {
+  return repo.language || "Project";
+}
+
+function renderRepos(repos) {
+  if (!repoGrid || !repoStatus) return;
+  const visibleRepos = repos
+    .filter((repo) => !repo.fork)
+    .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
+    .slice(0, 12);
+
+  repoGrid.innerHTML = "";
+  visibleRepos.forEach((repo) => {
+    const card = document.createElement("a");
+    card.className = "repo-card";
+    card.href = repo.html_url;
+    card.target = "_blank";
+    card.rel = "noreferrer";
+    card.innerHTML = `
+      <strong>${escapeHTML(repo.name)}</strong>
+      <p>${escapeHTML(repoDescription(repo))}</p>
+      <span class="repo-meta">
+        <span class="repo-pill">${escapeHTML(repoLanguage(repo))}</span>
+        <span class="repo-pill">★ ${repo.stargazers_count}</span>
+        <span class="repo-pill">↻ ${new Date(repo.updated_at).toLocaleDateString("ru-RU")}</span>
+      </span>
+    `;
+    repoGrid.appendChild(card);
+  });
+  repoStatus.textContent = visibleRepos.length
+    ? `Соединено репозиториев: ${visibleRepos.length}. Откройте карточку, чтобы перейти к проекту.`
+    : "Публичные репозитории пока не найдены, но центр уже готов для будущих проектов.";
+}
+
+function renderRepoFallback() {
+  renderRepos([
+    {
+      name: "milana808.github.io",
+      description: "Главный сайт AKSI Globe для людей, планет, знаний и добрых сообщений.",
+      html_url: "https://github.com/MILANA808/milana808.github.io",
+      language: "HTML",
+      stargazers_count: 0,
+      updated_at: new Date().toISOString(),
+      fork: false
+    },
+    {
+      name: "codex",
+      description: "Рабочий центр для кода, автоматизации и объединения проектов MILANA808.",
+      html_url: "https://github.com/MILANA808/codex",
+      language: "Rust / TypeScript",
+      stargazers_count: 0,
+      updated_at: new Date().toISOString(),
+      fork: false
+    }
+  ]);
+  if (repoStatus) repoStatus.textContent = "GitHub API сейчас недоступен, показан локальный список ключевых репозиториев.";
+}
+
+if (repoGrid && repoStatus) {
+  fetch("https://api.github.com/users/MILANA808/repos?per_page=100&sort=updated")
+    .then((response) => {
+      if (!response.ok) throw new Error(`GitHub API вернул ${response.status}`);
+      return response.json();
+    })
+    .then(renderRepos)
+    .catch(renderRepoFallback);
 }

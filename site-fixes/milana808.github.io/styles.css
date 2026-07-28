@@ -149,7 +149,7 @@ h3 { margin-bottom: .65rem; font-size: 1.25rem; }
 .button.primary { border: 0; background: linear-gradient(135deg, var(--pink), var(--violet)); box-shadow: 0 14px 44px rgba(157, 124, 255, .35); }
 .button.ghost:hover, .button.ghost:focus-visible { background: rgba(255,255,255,.14); }
 
-.globe-card, .card, details, .planet-info, .kind-message {
+.globe-card, .card, details, .planet-info, .kind-message, .repo-status, .repo-card {
   border: 1px solid var(--line);
   border-radius: 2rem;
   background: var(--panel);
@@ -256,6 +256,15 @@ h3 { margin-bottom: .65rem; font-size: 1.25rem; }
 .moon { right: -8px; top: -6px; width: .35rem; aspect-ratio: 1; border-radius: 50%; background: #ddd; }
 .ring { inset: 35% -45%; border: 2px solid rgba(255, 230, 180, .85); border-radius: 50%; transform: rotate(-18deg); }
 .planet-info { padding: 1rem 1.2rem; color: var(--muted); }
+.repo-intro { max-width: 760px; color: var(--muted); line-height: 1.65; }
+.repo-status { margin-bottom: 1rem; padding: 1rem 1.2rem; color: var(--muted); }
+.repo-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.repo-card { display: flex; min-height: 12rem; flex-direction: column; gap: .85rem; padding: 1.1rem; text-decoration: none; }
+.repo-card:hover, .repo-card:focus-visible { transform: translateY(-3px); outline: 2px solid rgba(124, 231, 255, .55); }
+.repo-card strong { font-size: 1.05rem; }
+.repo-card p { flex: 1; color: var(--muted); line-height: 1.55; }
+.repo-meta { display: flex; flex-wrap: wrap; gap: .45rem; color: var(--cyan); font-size: .82rem; font-weight: 800; }
+.repo-pill { border: 1px solid var(--line); border-radius: 999px; padding: .25rem .55rem; background: rgba(255,255,255,.06); }
 
 .knowledge-list { display: grid; gap: .9rem; }
 details { padding: 1rem 1.2rem; }
@@ -271,7 +280,7 @@ summary:focus-visible { outline: 2px solid var(--cyan); outline-offset: 6px; bor
   .topbar, .hero, .split { align-items: flex-start; }
   .topbar, .hero { flex-direction: column; }
   .hero { grid-template-columns: 1fr; padding-top: 2rem; }
-  .cards-grid { grid-template-columns: 1fr; }
+  .cards-grid, .repo-grid { grid-template-columns: 1fr; }
   .solar-system { min-height: 92vw; }
 }
 
