@@ -24,6 +24,26 @@ const messageButton = document.querySelector("#messageButton");
 const kindMessage = document.querySelector("#kindMessage");
 const repoGrid = document.querySelector("#repoGrid");
 const repoStatus = document.querySelector("#repoStatus");
+const themeToggle = document.querySelector("#themeToggle");
+
+function applyTheme(theme) {
+  const normalizedTheme = theme === "space" ? "space" : "light";
+  document.body.dataset.theme = normalizedTheme === "space" ? "space" : "light";
+  if (!themeToggle) return;
+  const isSpace = normalizedTheme === "space";
+  themeToggle.setAttribute("aria-pressed", String(!isSpace));
+  themeToggle.textContent = isSpace ? "🌌 Космос" : "☀️ Светлая";
+}
+
+applyTheme(localStorage.getItem("aksi-theme") || "light");
+
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    const nextTheme = document.body.dataset.theme === "space" ? "light" : "space";
+    localStorage.setItem("aksi-theme", nextTheme);
+    applyTheme(nextTheme);
+  });
+}
 
 function showPlanetFact(name) {
   if (!planetInfo) return;
