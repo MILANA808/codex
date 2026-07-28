@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AKSI Globe — добрый сайт для людей с картой заботы, знаниями и видимой Солнечной системой.">
+  <title>AKSI Globe — сайт для всех людей</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержанию</a>
+  <header class="topbar" aria-label="Главная навигация">
+    <a class="brand" href="#home" aria-label="AKSI Globe домой">
+      <span class="brand-mark" aria-hidden="true">✦</span>
+      <span>AKSI Globe</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#care">Помощь</a>
+      <a href="#solar">Солнечная система</a>
+      <a href="#repos">Мои репо</a>
+      <a href="#knowledge">Знания</a>
+      <a href="#messages">Добро</a>
+    </nav>
+    <button id="themeToggle" class="theme-toggle" type="button" aria-pressed="false">☀️ Светлая</button>
+  </header>
+
+  <main id="main">
+    <section id="home" class="hero section-shell">
+      <div class="hero-copy">
+        <p class="eyebrow">🤍 Для всех людей • 🫶🏻 Для мира • ☀️ Светлая энергия</p>
+        <h1>Сайт, который помогает людям видеть свет, знания и нашу Солнечную систему.</h1>
+        <p class="hero-text">AKSI Globe собирает в одном месте добрые действия, спокойные подсказки, космическую карту и маленькие шаги, которые можно сделать уже сегодня.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#care">Что мне сделать сейчас?</a>
+          <a class="button ghost" href="#solar">Показать планеты</a>
+        </div>
+      </div>
+      <div class="globe-card" aria-label="AKSI Globe">
+        <div class="globe">
+          <span class="globe-orbit orbit-one"></span>
+          <span class="globe-orbit orbit-two"></span>
+          <span class="globe-core">AKSI</span>
+        </div>
+        <p>Глобус заботы: связь людей, знаний, природы и технологий.</p>
+      </div>
+    </section>
+
+    <section id="care" class="section-shell">
+      <div class="section-heading">
+        <p class="eyebrow">Быстрая помощь</p>
+        <h2>Полезные шаги для каждого дня</h2>
+      </div>
+      <div class="cards-grid">
+        <article class="card">
+          <h3>Если тревожно</h3>
+          <p>Сделайте 4 медленных вдоха, назовите 5 предметов вокруг и напишите одному близкому человеку.</p>
+        </article>
+        <article class="card">
+          <h3>Если нужен план</h3>
+          <p>Выберите одну маленькую задачу на 10 минут. После неё решите следующий шаг, не весь путь сразу.</p>
+        </article>
+        <article class="card">
+          <h3>Если нужна доброта</h3>
+          <p>Отправьте тёплое сообщение, поблагодарите кого-то или помогите человеку рядом простым действием.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="solar" class="section-shell solar-section">
+      <div class="section-heading split">
+        <div>
+          <p class="eyebrow">AKSI Globe Space</p>
+          <h2>Наша Солнечная система видна здесь</h2>
+        </div>
+        <button id="scaleToggle" class="button ghost" type="button" aria-pressed="false">Компактный масштаб</button>
+      </div>
+      <div class="solar-system" role="img" aria-label="Анимированная Солнечная система: Солнце, Меркурий, Венера, Земля, Марс, Юпитер, Сатурн, Уран и Нептун">
+        <div class="sun" title="Солнце"><span>☀</span></div>
+        <div class="orbit mercury"><button class="planet" data-planet="Меркурий" aria-label="Меркурий"></button></div>
+        <div class="orbit venus"><button class="planet" data-planet="Венера" aria-label="Венера"></button></div>
+        <div class="orbit earth"><button class="planet" data-planet="Земля" aria-label="Земля"><span class="moon"></span></button></div>
+        <div class="orbit mars"><button class="planet" data-planet="Марс" aria-label="Марс"></button></div>
+        <div class="orbit jupiter"><button class="planet" data-planet="Юпитер" aria-label="Юпитер"></button></div>
+        <div class="orbit saturn"><button class="planet" data-planet="Сатурн" aria-label="Сатурн"><span class="ring"></span></button></div>
+        <div class="orbit uranus"><button class="planet" data-planet="Уран" aria-label="Уран"></button></div>
+        <div class="orbit neptune"><button class="planet" data-planet="Нептун" aria-label="Нептун"></button></div>
+      </div>
+      <aside id="planetInfo" class="planet-info" aria-live="polite">Нажмите на планету, чтобы увидеть короткий факт.</aside>
+    </section>
+
+    <section id="repos" class="section-shell">
+      <div class="section-heading split">
+        <div>
+          <p class="eyebrow">Единый центр</p>
+          <h2>Все репозитории MILANA808 в одном месте</h2>
+        </div>
+        <a class="button ghost" href="https://github.com/MILANA808?tab=repositories" target="_blank" rel="noreferrer">Открыть GitHub</a>
+      </div>
+      <p class="repo-intro">AKSI Globe соединяет проекты как созвездие: сайт, код, идеи и будущие приложения доступны из одной страницы.</p>
+      <div id="repoStatus" class="repo-status" aria-live="polite">Загружаю публичные репозитории…</div>
+      <div id="repoGrid" class="repo-grid" aria-label="Публичные репозитории MILANA808"></div>
+    </section>
+
+    <section id="knowledge" class="section-shell">
+      <div class="section-heading">
+        <p class="eyebrow">Знания для людей</p>
+        <h2>Мини-библиотека AKSI</h2>
+      </div>
+      <div class="knowledge-list">
+        <details open>
+          <summary>Как учиться спокойнее?</summary>
+          <p>Учитесь короткими сессиями по 20–25 минут, записывайте один вывод и делайте паузу для глаз и тела.</p>
+        </details>
+        <details>
+          <summary>Как беречь цифровую безопасность?</summary>
+          <p>Используйте разные пароли, включайте 2FA и не открывайте подозрительные ссылки, даже если они выглядят срочно.</p>
+        </details>
+        <details>
+          <summary>Как заботиться о планете?</summary>
+          <p>Экономьте воду и энергию, сортируйте то, что можно, и выбирайте повторное использование вместо лишней покупки.</p>
+        </details>
+      </div>
+    </section>
+
+    <section id="messages" class="section-shell">
+      <div class="section-heading split">
+        <div>
+          <p class="eyebrow">Добрые сообщения</p>
+          <h2>Генератор поддержки</h2>
+        </div>
+        <button id="messageButton" class="button primary" type="button">Подарить фразу</button>
+      </div>
+      <blockquote id="kindMessage" class="kind-message">Ты важен. Даже маленький шаг сегодня — это уже движение к свету.</blockquote>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>AKSI Globe • сделано с любовью для людей 🤍🫶🏻</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
